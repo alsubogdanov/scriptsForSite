@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selectors</title>
+    <link rel="stylesheet" href="styles/targil.css">
+</head>
+<style>
+    img {
+        padding: 100px;
+        border: 1px solid red;
+    }
+</style>
+
+<body>
+
+    <div class="prices_card__content-wrap">
+        <select>
+            <option>RUB</option>
+            <option>EURO</option>
+            <option>USD</option>
+        </select>
+        <ul>
+            <li data-cost='2000'>8 workouts: <span>2000 RUB</span>/1 workout</li>
+            <li data-cost='1600'>12 workouts: <span>1600 RUB</span>/1 workout</li>
+            <li data-cost='1300'>24 workouts: <span>1300 RUB</span>/1 workout</li>
+        </ul>
+        
+    </div>
+
+    <script>
+        let db = [
+            {
+                ISO4217: '&#8381;',//rub
+                multiply: 1
+            }, {
+                ISO4217: '&#8364;', //euro
+                multiply: 0.765456
+            }, {
+                ISO4217: '&#36;', //usd
+                multiply: 0.016046
+            }
+        ];
+
+        document.querySelector('select').addEventListener('change', function (e) {
+            let option = db[this.selectedIndex];
+
+            rebuildPrices(option);
+        });
+
+
+        function rebuildPrices(option) {
+            [...document.querySelectorAll('ul span')].forEach(span =>
+                span.innerHTML = `${+(+span.parentNode.dataset.cost * option.multiply).toFixed(3)} ${option.ISO4217}`);
+        }
+
+    </script>
+    
+    <hr>
+
+    <div class="prices_card__nav">
+        <span class="prices_card__nav-item is-active" data-exchange="1">USA (&#36;)</span>
+        <span class="prices_card__nav-item" data-exchange="74">RUB (&#8381;)</span>
+        <span class="prices_card__nav-item" data-exchange="0.85">EURO (&#8364;)</span>
+        <span class="prices_card__nav-item" data-exchange="3.4">ILS (&#8362;)</span>
+    </div>
+    <div class="prices_card__content">
+        <div class="prices_card__content-items">
+            <a class="prices_card__content-item" href="#">
+                8 workouts <span class="price_dol" data-cost="9.0">&#36; 9.0</span></br>
+            </a>
+            <a class="prices_card__content-item" href="#">
+                12 workouts <span class="price_dol" data-cost="8.0">&#36; 8.0</span></br> 
+            </a>
+            <a class="prices_card__content-item" href="#">
+                24 workouts <span class="price_dol" data-cost="7.0">&#36; 7.0</span></br> 
+            </a>
+        </div>
+    </div>
+    <script>
+        let db1 = [
+        {
+            ISO4217: '&#36;', //usd
+        },
+        {
+            ISO4217: '&#8381;',//rub
+        },
+        {
+            ISO4217: '&#8364;', //euro
+        },
+        {
+            ISO4217: '&#8362;', //&#8362;
+        }
+    ]
+    
+    //tabs
+    let nav = document.querySelectorAll('.prices_card__nav-item');
+    let prices = document.querySelectorAll('.price_dol');
+       
+    for (let i = 0; i < nav.length; i++) {
+        //for all tabs assign function that removes class is-active from all tabs
+        nav[i].onclick = function() {
+            nav.forEach(function(e) {
+                e.classList.remove('is-active') 
+            });
+            nav[i].classList.add('is-active');
+            let exch=nav[i].dataset.exchange; 
+
+            prices.forEach(function(elem){
+                elem.innerHTML = db1[i].ISO4217+' '+(elem.dataset.cost * exch).toFixed(1)
+            })
+        }
+    }
+    </script>
+
+    <script src="js.js"></script>
+</body>
+
+</html>
