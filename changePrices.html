@@ -1,21 +1,17 @@
+<!-- change prices by the currency with select element -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Selectors</title>
-    <link rel="stylesheet" href="styles/targil.css">
+    <title>Chahge prices</title>
 </head>
-<style>
-    img {
-        padding: 100px;
-        border: 1px solid red;
-    }
-</style>
 
 <body>
 
     <div class="prices_card__content-wrap">
+        
+<!--select  currency -->
         <select>
             <option>RUB</option>
             <option>EURO</option>
@@ -49,7 +45,6 @@
             rebuildPrices(option);
         });
 
-
         function rebuildPrices(option) {
             [...document.querySelectorAll('ul span')].forEach(span =>
                 span.innerHTML = `${+(+span.parentNode.dataset.cost * option.multiply).toFixed(3)} ${option.ISO4217}`);
@@ -58,7 +53,8 @@
     </script>
     
     <hr>
-
+    
+<!-- change prices by the currency with buttons -->
     <div class="prices_card__nav">
         <span class="prices_card__nav-item is-active" data-exchange="1">USA (&#36;)</span>
         <span class="prices_card__nav-item" data-exchange="74">RUB (&#8381;)</span>
@@ -90,7 +86,7 @@
             ISO4217: '&#8364;', //euro
         },
         {
-            ISO4217: '&#8362;', //&#8362;
+            ISO4217: '&#8362;', //ILS
         }
     ]
     
@@ -114,7 +110,5 @@
     }
     </script>
 
-    <script src="js.js"></script>
 </body>
-
 </html>
