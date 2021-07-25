@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>FilterElem</title>
+</head>
+<body>
+    <section class="section section-catalog">
+        <div class="container">
+          <header class="section__header">
+            <nav class="catalog-nav">
+              <ul class="catalog-nav__wrapper">
+                <li class="catalog-nav__item">
+                  <button class="catalog-nav__btn is-active" type="button"  data-filter="all">All</button>
+                </li>
+                <li class="catalog-nav__item">
+                  <button class="catalog-nav__btn" type="button"data-filter="cat1">first category</button>
+                </li>
+                <li class="catalog-nav__item">
+                  <button class="catalog-nav__btn" type="button"data-filter="cat2">second category</button>
+                </li>
+                <li class="catalog-nav__item">
+                  <button class="catalog-nav__btn" type="button"data-filter="cat3">third category</button>
+                </li>
+              </ul>
+            </nav >
+          </header>
+      
+          <div class="catalog">
+            <div class="catalog__item" data-category="cat1,cat2">
+              <div class="product catalog__product">
+                <h3 class="product__title">Title of product 1</h3>
+                <p class="product__description">Description of product </p>
+              </div>
+            </div>
+            <div class="catalog__item" data-category="cat1,cat2">
+                <div class="product catalog__product">
+                  <h3 class="product__title">Title of product 2</h3>
+                  <p class="product__description">Description of product </p>
+                </div>
+            </div>
+            <div class="catalog__item" data-category="cat2,cat1">
+            <div class="product catalog__product">
+                <h3 class="product__title">Title of product 3</h3>
+                <p class="product__description">Description of product </p>
+            </div>
+            </div>
+            <div class="catalog__item" data-category="cat2,cat3">
+            <div class="product catalog__product">
+                <h3 class="product__title">Title of product 4</h3>
+                <p class="product__description">Description of product </p>
+            </div>
+            </div>
+            <div class="catalog__item" data-category="cat1,cat3">
+            <div class="product catalog__product">
+                <h3 class="product__title">Title of product 5</h3>
+                <p class="product__description">Description of product </p>
+            </div>
+            </div>
+            <div class="catalog__item" data-category="cat3,cat2">
+            <div class="product catalog__product">
+                <h3 class="product__title">Title of product 6</h3>
+                <p class="product__description">Description of product </p>
+            </div>
+            </div>
+            <div class="catalog__item" data-category="cat1,cat2">
+            <div class="product catalog__product">
+                <h3 class="product__title">Title of product 7</h3>
+                <p class="product__description">Description of product </p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script src="js.js"></script>
+      <script src="../../assets/js/myLib.js"></script>
+</body>
+</html>
