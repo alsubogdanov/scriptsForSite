@@ -110,6 +110,53 @@
         }
     }
     </script>
+<!-- change divs with btn -->
+<div class="tabs">
+    <span class="tab_item is-active">USA</span>
+    <span class="tab_item">RUB</span>
+    <span class="tab_item">EURO</span>
+    <span class="tab_item">ILS</span>
+</div>
+<div class="prices_card__content">
+    <div class="prices_card__content-items">
+        <a class="tab_content is-active" href="#">
+            text1
+        </a>
+        <a class="tab_content" href="#">
+            text2
+        </a>
+        <a class="tab_content" href="#">
+            text3
+        </a>
+        <a class="tab_content" href="#">
+            text4
+        </a>
+    </div>
+</div>
 
+<script>
+    tabs('.tab_item','.tab_content');
+
+  function tabs(tabItemClassName, tabContentClassName){
+    let tabItem = document.querySelectorAll(tabItemClassName);
+    let tabContent = document.querySelectorAll(tabContentClassName);
+      
+    for (let i = 0; i < tabItem.length; i++) {
+        //for all tabs assign function that removes class is-active from all tabs
+        tabItem[i].onclick = function() {
+            tabItem.forEach(function(e) {
+                e.classList.remove('is-active') 
+            });
+            tabItem[i].classList.add('is-active');
+            let exch=tabItem[i].dataset.exchange; 
+
+            tabContent.forEach(function(elem){
+                elem.classList.remove('is-active')
+            });
+            tabContent[i].classList.add('is-active')
+        }
+    }
+  }
+</script>
 </body>
 </html>
